@@ -6,6 +6,7 @@ pagination-controls {
 .my-pagination /deep/   {
     .ngx-pagination {
         color: red;
+        text-align: center;
 
         li {
             background: #ccc;

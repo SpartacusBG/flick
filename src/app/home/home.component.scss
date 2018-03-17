@@ -1,19 +1,8 @@
-.images-container {
-
-  
-
-  .image-box {
-
-    width: 30%;
-    height: 250px;
-    background-color: #ccc;
-    border: 1px solid #000;
-    float: left;
-    margin: 1.5%;
-
-    img {
-      width: 100px;
-    }
-
-  }
+.small-image {
+    max-width: 100%;
+    width: auto;
+    display: block;
+    max-height: 250px;
+    height: auto;
+    margin: 0 auto;
 }

@@ -17,17 +17,25 @@ export class HomeComponent implements OnInit {
   totalItems: number;
   currentSearch: string;
   itemsPerPage: number;
+  comment: string;
+  spinner: boolean = false;
 
   constructor(
     private flickrSharedService: FlickrSharedService
   ) {
-    this.itemsPerPage = 3;
+    this.itemsPerPage = 10;
    }
 
   ngOnInit() {
     this.isLoading = true;
     this.loadAll(1);
 
+  }
+
+  onEnterPress(query: any,event: any) {
+    if (event && event.keyCode == 13) {
+      this.search(query)
+    }
   }
 
   search(query: any) {
@@ -45,7 +53,7 @@ export class HomeComponent implements OnInit {
 
 
   loadAll(event?: any) {
-
+    this.spinner = true;
     if (this.currentSearch) {
       this.flickrSharedService.search({
         query: this.currentSearch,
@@ -72,10 +80,12 @@ export class HomeComponent implements OnInit {
   private onSuccess(response: any) {
     this.totalItems = response.photos.pages * response.photos.perpage;
     this.imageContentArray = response.photos.photo;
+    this.spinner = false;
   }
 
   private onError(error: any) {
     alert(error.error);
+    this.spinner = false;
   }
 
   getServerData(event: any) {

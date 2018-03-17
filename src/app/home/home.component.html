@@ -2,42 +2,53 @@
 
   <section>
     <div class="container">
-      <div class="jumbotron text-center">
-        <h1>
-          Welcome to the App. Please enjoy the content.
-        </h1> 
+      <div class="row">
+        <div class="col-md-6">
+          <input class="form-control" name="search" (keydown)="onEnterPress(currentSearch, $event)" placeholder="Search for Title or description" type="text" [(ngModel)]="currentSearch">
+        </div>
+        <div class="col-md-6">
+          <button class="btn btn-success" (click)="search(currentSearch)">Search</button>
+        </div>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="container">
-        <div class="search">
-            <span>Search:</span>
-            <input name="search" placeholder="Search for Title or description" type="text" [(ngModel)]="currentSearch">
-            <button (click)="search(currentSearch)">Search</button>
-        </div>
-      <div class="images-container clearfix">
-          <div class="image-box" *ngFor="let imageObj of imageContentArray | paginate: { itemsPerPage: itemsPerPage, currentPage: p, totalItems: totalItems }">
-            
-            <a href="#{{ imageObj.id }}" class="lightbox">
-                <img [src]="constructImageUrl(imageObj.farm, imageObj.server, imageObj.id, imageObj.secret)" alt="">
-            </a>
+    <spinner class="spinner" [size]="120" *ngIf="spinner" [tickness]="3" [color]="'#faa933'"></spinner>
+    <div class="album py-5 bg-light">
+      <div class="container">
 
-            <div class="lightbox-target" id="{{ imageObj.id }}">
-                <img [src]="constructImageUrl(imageObj.farm, imageObj.server, imageObj.id, imageObj.secret)" alt="">
+
+        <div class="row">
+          <div class="col-md-4" *ngFor="let imageObj of imageContentArray | paginate: { itemsPerPage: itemsPerPage, currentPage: p, totalItems: totalItems }">
+            <div class="card mb-4 box-shadow">
+              <a href="#{{ imageObj.id }}" class="lightbox">
+                <img class="card-img-top small-image" style=" max-width: 100%; display: block;" [src]="constructImageUrl(imageObj.farm, imageObj.server, imageObj.id, imageObj.secret)"
+                  alt="">
+              </a>
+
+              <div class="lightbox-target" id="{{ imageObj.id }}">
+                <img class="card-img-top" [src]="constructImageUrl(imageObj.farm, imageObj.server, imageObj.id, imageObj.secret)" alt="">
                 <a class="lightbox-close" href="#"></a>
-             </div>
-            
-          <p>
-            {{ imageObj.title }}
-          </p>
+              </div>
+
+              <div class="card-body">
+                <p class="card-text">
+                  {{ imageObj.title }}
+                </p>
+              </div>
+            </div>
           </div>
+        </div>
+
+        <pagination-controls class="my-pagination" previousLabel="" nextLabel="" (pageChange)="p = $event;  getServerData($event)"></pagination-controls>
+
       </div>
-      <pagination-controls class="my-pagination" previousLabel="" nextLabel="" (pageChange)="p = $event;  getServerData($event)"></pagination-controls>
+
     </div>
 
   </section>
+  
 
 
 </div>
