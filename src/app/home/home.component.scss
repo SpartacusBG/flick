@@ -1,9 +1,14 @@
-.logo {
-  width: 100px;
-}
+.images-container {
 
-q {
-  font-style: italic;
-  font-size: 1.2rem;
-  quotes: "« " " »";
+  
+
+  .image-box {
+   
+    float: left;
+    img {
+      width: 30%;
+      height: 200px;
+    }
+
+  }
 }

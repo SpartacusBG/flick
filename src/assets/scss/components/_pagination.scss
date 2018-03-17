@@ -1,0 +1,42 @@
+pagination-controls {
+
+
+}
+
+.my-pagination /deep/   {
+    .ngx-pagination {
+        color: red;
+
+        li {
+            background: #ccc;
+            color: #000;
+            margin: 2px;
+        }
+
+        .pagination-previous, .pagination-next {
+            color: red;
+            background: transparent;
+        }
+
+
+        .pagination-previous a:before {
+            content: '❮';
+        }
+
+        .pagination-next a:after {
+            content: '❯';
+        }
+        .current {
+            background: #636c7a;
+            color: #fff;
+        }
+    }
+
+    .ngx-pagination .pagination-next a::after, .ngx-pagination .pagination-next.disabled::after {
+        content: '❯';
+    }
+
+    .ngx-pagination .pagination-previous a::before, .ngx-pagination .pagination-previous.disabled::before {
+        content: '❮';
+    }
+}
