@@ -8,6 +8,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
 import { FileUploadModule } from 'primeng/fileupload';
 import { SpinnerModule } from 'angular2-spinner/dist';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { SpinnerModule } from 'angular2-spinner/dist';
     Ng2SearchPipeModule,
     FormsModule,
     FileUploadModule,
-    SpinnerModule
+    SpinnerModule,
+    MultiSelectModule
   ],
   declarations: [
     LoaderComponent
@@ -26,7 +28,8 @@ import { SpinnerModule } from 'angular2-spinner/dist';
     NgxPaginationModule,
     Ng2SearchPipeModule,
     FileUploadModule,
-    SpinnerModule
+    SpinnerModule,
+    MultiSelectModule
   ],
   providers: [
     FlickrSharedService

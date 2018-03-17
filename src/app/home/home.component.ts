@@ -19,17 +19,18 @@ export class HomeComponent implements OnInit {
   itemsPerPage: number;
   comment: string;
   spinner: boolean = false;
+  defaultTag: string = 'dogs';
+
 
   constructor(
     private flickrSharedService: FlickrSharedService
   ) {
-    this.itemsPerPage = 10;
+    this.itemsPerPage = 12;
    }
 
   ngOnInit() {
     this.isLoading = true;
     this.loadAll(1);
-
   }
 
   onEnterPress(query: any,event: any) {
@@ -58,7 +59,7 @@ export class HomeComponent implements OnInit {
       this.flickrSharedService.search({
         query: this.currentSearch,
         page: event,
-        tags: 'cats'
+        tags: this.defaultTag
       }).subscribe(
         (res: Response) => this.onSuccess(res.json()),
         (res: Response) => this.onError(res.json())
@@ -68,7 +69,7 @@ export class HomeComponent implements OnInit {
     this.flickrSharedService.query({
         page: event,
         size: this.itemsPerPage,
-        tags: 'cats'
+        tags: this.defaultTag
       }
     
   ).subscribe(

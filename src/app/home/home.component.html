@@ -4,10 +4,21 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <input class="form-control" name="search" (keydown)="onEnterPress(currentSearch, $event)" placeholder="Search for Title or description" type="text" [(ngModel)]="currentSearch">
+          <div class="row">
+            <div class="col-md-8">
+              <input class="form-control" name="search" (keydown)="onEnterPress(currentSearch, $event)" placeholder="Search for Title or description" type="text" [(ngModel)]="currentSearch">
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-success" (click)="search(currentSearch)">Search</button>
+            </div>
+          </div>
         </div>
         <div class="col-md-6">
-          <button class="btn btn-success" (click)="search(currentSearch)">Search</button>
+          <select class="form-control selectpicker" multiple title="Choose one of the following..." name="tags" id="">
+              <option>Mustard</option>
+              <option>Ketchup</option>
+              <option>Relish</option>
+          </select>
         </div>
       </div>
     </div>
