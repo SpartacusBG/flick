@@ -17,9 +17,18 @@
             <input name="search" placeholder="Search for Title or description" type="text" [(ngModel)]="currentSearch">
             <button (click)="search(currentSearch)">Search</button>
         </div>
-      <div class="images-container">
+      <div class="images-container clearfix">
           <div class="image-box" *ngFor="let imageObj of imageContentArray | paginate: { itemsPerPage: itemsPerPage, currentPage: p, totalItems: totalItems }">
-            <img [src]="constructImageUrl(imageObj.farm, imageObj.server, imageObj.id, imageObj.secret)" alt="">
+            
+            <a href="#{{ imageObj.id }}" class="lightbox">
+                <img [src]="constructImageUrl(imageObj.farm, imageObj.server, imageObj.id, imageObj.secret)" alt="">
+            </a>
+
+            <div class="lightbox-target" id="{{ imageObj.id }}">
+                <img [src]="constructImageUrl(imageObj.farm, imageObj.server, imageObj.id, imageObj.secret)" alt="">
+                <a class="lightbox-close" href="#"></a>
+             </div>
+            
           <p>
             {{ imageObj.title }}
           </p>

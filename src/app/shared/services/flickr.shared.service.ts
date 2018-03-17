@@ -38,7 +38,7 @@ export class FlickrSharedService {
         return this.http.get(this.resourceUrl, options);
     }
 
-    loadFlickrPhotos(req?: any) {
+    query(req?: any) {
         const options = {
             search: this.setParams(req)
         };

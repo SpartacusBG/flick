@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
         );
       return;
   }
-    this.flickrSharedService.loadFlickrPhotos({
+    this.flickrSharedService.query({
         page: event,
         size: this.itemsPerPage,
         tags: 'cats'

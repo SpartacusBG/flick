@@ -3,11 +3,16 @@
   
 
   .image-box {
-   
+
+    width: 30%;
+    height: 250px;
+    background-color: #ccc;
+    border: 1px solid #000;
     float: left;
+    margin: 1.5%;
+
     img {
-      width: 30%;
-      height: 200px;
+      width: 100px;
     }
 
   }
