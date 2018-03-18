@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class FlickrSharedService {
 
-    apiKey: string = '7c2a8024b7d7d7124769fb3448f4e8cf';
+    apiKey: string = '542874581808fbf5e126a0dc29b21933';
     defaultTag: string = 'nature';
     resourceUrl: string = 'https://api.flickr.com/services/rest/?method=flickr.photos.search';
 
