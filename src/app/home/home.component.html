@@ -5,33 +5,39 @@
       <div class="row">
         <div class="col-md-6">
           <div class="row">
-            <div class="col-md-8">
-              <input class="form-control" name="search" (keydown)="onEnterPress(currentSearch, $event)" placeholder="Search for Title or description" type="text" [(ngModel)]="currentSearch">
+            <div class="col-xs-8 col-md-8">
+              <input class="form-control" name="search" (keydown)="onEnterPress($event)" placeholder="Search for Title or description"
+                type="text" [(ngModel)]="currentSearch">
             </div>
-            <div class="col-md-4">
-              <button class="btn btn-success" (click)="search(currentSearch)">Search</button>
+            <div class="col-xs-4 col-md-4">
+              <button class="btn btn-success" (click)="cllSearch()">Search</button>
             </div>
           </div>
         </div>
         <div class="col-md-6">
-          <select class="form-control selectpicker" multiple title="Choose one of the following..." name="tags" id="">
-              <option>Mustard</option>
-              <option>Ketchup</option>
-              <option>Relish</option>
-          </select>
+            <div class="row">
+                <div class="col-md-8">
+                  <input class="form-control" name="search" (keydown)="onEnterPress($event)" placeholder="Search for Tags (dogs,cats,nature)"
+                    type="text" [(ngModel)]="tags">
+                </div>
+                <div class="col-md-4">
+                  <button class="btn btn-success" (click)="cllSearch()">Search</button>
+                </div>
+              </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section>
+  <section id="infinite-scroller" appInfiniteScroller scrollPerecnt="70" immediateCallback="true" [scrollCallback]="scrollCallback">
     <spinner class="spinner" [size]="120" *ngIf="spinner" [tickness]="3" [color]="'#faa933'"></spinner>
     <div class="album py-5 bg-light">
       <div class="container">
 
+        <div *ngIf="imageContentArray.length == 0 && !spinner">No Results Found</div>
 
-        <div class="row">
-          <div class="col-md-4" *ngFor="let imageObj of imageContentArray | paginate: { itemsPerPage: itemsPerPage, currentPage: p, totalItems: totalItems }">
+        <div class="row" *ngIf="imageContentArray.length > 0">
+          <div class="col-md-4" *ngFor="let imageObj of imageContentArray">
             <div class="card mb-4 box-shadow">
               <a href="#{{ imageObj.id }}" class="lightbox">
                 <img class="card-img-top small-image" style=" max-width: 100%; display: block;" [src]="constructImageUrl(imageObj.farm, imageObj.server, imageObj.id, imageObj.secret)"
@@ -44,22 +50,18 @@
               </div>
 
               <div class="card-body">
-                <p class="card-text">
-                  {{ imageObj.title }}
-                </p>
+                <description [imageObj]="imageObj"></description>
               </div>
             </div>
           </div>
         </div>
-
-        <pagination-controls class="my-pagination" previousLabel="" nextLabel="" (pageChange)="p = $event;  getServerData($event)"></pagination-controls>
 
       </div>
 
     </div>
 
   </section>
-  
+
 
 
 </div>

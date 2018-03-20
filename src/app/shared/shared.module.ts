@@ -9,6 +9,10 @@ import { FormsModule } from '@angular/forms';
 import { FileUploadModule } from 'primeng/fileupload';
 import { SpinnerModule } from 'angular2-spinner/dist';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { DescriptionComponent } from './components/description/description.component';
+import { InfiniteScrollerDirective } from './directives/infinite-scroll.directive';
+import { AuthHttp } from './services/AuthHttp';
 
 @NgModule({
   imports: [
@@ -18,21 +22,29 @@ import { MultiSelectModule } from 'primeng/multiselect';
     FormsModule,
     FileUploadModule,
     SpinnerModule,
-    MultiSelectModule
+    MultiSelectModule,
+    InfiniteScrollModule
+    
   ],
   declarations: [
-    LoaderComponent
+    LoaderComponent,
+    DescriptionComponent,
+    InfiniteScrollerDirective
   ],
   exports: [
     LoaderComponent,
+    DescriptionComponent,
     NgxPaginationModule,
     Ng2SearchPipeModule,
     FileUploadModule,
     SpinnerModule,
-    MultiSelectModule
+    MultiSelectModule,
+    InfiniteScrollModule,
+    InfiniteScrollerDirective
   ],
   providers: [
-    FlickrSharedService
+    FlickrSharedService,
+    AuthHttp
   ]
 })
 export class SharedModule { }

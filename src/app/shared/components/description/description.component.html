@@ -1,0 +1,33 @@
+<div *ngIf="spinner" class="data-loading-container">
+    <spinner class="description-spinner" [size]="30" [tickness]="3" [color]="'#d34343'"></spinner>
+    <div>Loading Additional Data</div>
+</div>
+
+<div *ngIf="!spinner" class="data-container">
+
+    <div class="title-container">
+        <a href="{{ imageUrl }}">
+            {{ photoTitle }}
+        </a>
+        by 
+        <a *ngIf="author" href="https://www.flickr.com/photos/{{ authorUsername }}">
+            {{ author }}
+        </a>
+        <span *ngIf="!author">UNKNOWN</span>
+
+    </div>
+
+    <div class="description-container">
+        <strong>Description:</strong>
+        <span *ngIf="!description">No description avaliable</span>
+        <span *ngIf="description">{{ description }}</span>
+    </div>
+
+    <div class="tag-container">
+        <strong>Tags:</strong>
+        <span *ngFor="let tag of tags">
+            {{ tag._content }},
+        </span>
+        <span *ngIf="!tags">No Tags</span>
+    </div>
+</div>
