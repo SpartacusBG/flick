@@ -20,14 +20,19 @@
     <div class="description-container">
         <strong>Description:</strong>
         <span *ngIf="!description">No description avaliable</span>
-        <span *ngIf="description">{{ description }}</span>
+        
+        <read-more *ngIf="description"> 
+            {{description}}
+        </read-more>
     </div>
 
     <div class="tag-container">
         <strong>Tags:</strong>
-        <span *ngFor="let tag of tags">
-            {{ tag._content }},
-        </span>
+        <read-more *ngIf="tags">
+                <span *ngFor="let tag of tags">
+                    {{ tag._content }},
+                </span>
+            </read-more>
         <span *ngIf="!tags">No Tags</span>
     </div>
 </div>

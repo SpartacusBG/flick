@@ -17,10 +17,16 @@
     div.col-md-4 {
       padding : 10px 5px;
       line-height: 1.5;
-    
+      
+      .small-box-container {
+        min-height: 500px;
+        overflow: hidden;
+
+        .lightbox {
+          padding: 1.25rem 1.25rem 0 1.25rem;
+        }
+      }
     }
 
-    .lightbox {
-      padding: 1.25rem 1.25rem 0 1.25rem;
-    }
+    
   }

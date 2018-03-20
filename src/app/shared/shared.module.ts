@@ -11,6 +11,7 @@ import { SpinnerModule } from 'angular2-spinner/dist';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { DescriptionComponent } from './components/description/description.component';
+import { ReadMoreComponent } from './components/read-more/read-more.component';
 import { InfiniteScrollerDirective } from './directives/infinite-scroll.directive';
 import { AuthHttp } from './services/AuthHttp';
 
@@ -29,7 +30,8 @@ import { AuthHttp } from './services/AuthHttp';
   declarations: [
     LoaderComponent,
     DescriptionComponent,
-    InfiniteScrollerDirective
+    InfiniteScrollerDirective,
+    ReadMoreComponent
   ],
   exports: [
     LoaderComponent,
@@ -40,7 +42,8 @@ import { AuthHttp } from './services/AuthHttp';
     SpinnerModule,
     MultiSelectModule,
     InfiniteScrollModule,
-    InfiniteScrollerDirective
+    InfiniteScrollerDirective,
+    ReadMoreComponent
   ],
   providers: [
     FlickrSharedService,

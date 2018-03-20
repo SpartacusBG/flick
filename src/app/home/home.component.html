@@ -38,7 +38,7 @@
 
         <div class="row" *ngIf="imageContentArray.length > 0">
           <div class="col-md-4" *ngFor="let imageObj of imageContentArray">
-            <div class="card mb-4 box-shadow">
+            <div class="card mb-4 box-shadow small-box-container">
               <a href="#{{ imageObj.id }}" class="lightbox">
                 <img class="card-img-top small-image" style=" max-width: 100%; display: block;" [src]="constructImageUrl(imageObj.farm, imageObj.server, imageObj.id, imageObj.secret)"
                   alt="">
