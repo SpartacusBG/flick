@@ -13,11 +13,18 @@
 @import "~@fortawesome/fontawesome-free-webfonts/scss/fa-regular.scss";
 @import "~@fortawesome/fontawesome-free-webfonts/scss/fa-solid.scss";
 
+//PrimeNG
+@import '../node_modules/primeng/resources/primeng.min.css';
+@import 'assets/scss/lib/_primeng-error.component.scss';
+
 // Theme customization
 @import "theme/theme";
 
-//Scss Files
-@import "assets/scss/global.scss";
+//General
+@import "assets/scss/_global.scss";
+@import './assets/scss/mixins/_media-query.mixin.scss';
 @import "assets/scss/_utility-classes.scss";
-@import "assets/scss/components/_pagination.scss";
+
+// Components
 @import "assets/scss/components/_lightbox.scss";
+

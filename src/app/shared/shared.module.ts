@@ -3,51 +3,50 @@ import { CommonModule } from '@angular/common';
 
 import { LoaderComponent } from './loader/loader.component';
 import { FlickrSharedService } from './services/flickr.shared.service';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { FormsModule } from '@angular/forms';
-import { FileUploadModule } from 'primeng/fileupload';
 import { SpinnerModule } from 'angular2-spinner/dist';
-import { MultiSelectModule } from 'primeng/multiselect';
+
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { DescriptionComponent } from './components/description/description.component';
 import { ReadMoreComponent } from './components/read-more/read-more.component';
 import { InfiniteScrollerDirective } from './directives/infinite-scroll.directive';
-import { AuthHttp } from './services/AuthHttp';
+import { FormsModule } from '@angular/forms';
+import { GrowlModule } from 'primeng/growl';
+import { ErrorMessageComponent } from './components/error/error-message.component';
+import { ErrorMessageSharedService } from './services/error-message.shared.service';
 
 @NgModule({
   imports: [
     CommonModule,
-    NgxPaginationModule,
     Ng2SearchPipeModule,
     FormsModule,
-    FileUploadModule,
     SpinnerModule,
-    MultiSelectModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    GrowlModule
     
   ],
   declarations: [
     LoaderComponent,
     DescriptionComponent,
     InfiniteScrollerDirective,
-    ReadMoreComponent
+    ReadMoreComponent,
+    ErrorMessageComponent
   ],
   exports: [
     LoaderComponent,
     DescriptionComponent,
-    NgxPaginationModule,
     Ng2SearchPipeModule,
-    FileUploadModule,
     SpinnerModule,
-    MultiSelectModule,
     InfiniteScrollModule,
     InfiniteScrollerDirective,
-    ReadMoreComponent
+    ReadMoreComponent,
+    FormsModule,
+    GrowlModule,
+    ErrorMessageComponent
   ],
   providers: [
     FlickrSharedService,
-    AuthHttp
+    ErrorMessageSharedService
   ]
 })
 export class SharedModule { }

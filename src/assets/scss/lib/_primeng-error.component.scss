@@ -1,0 +1,33 @@
+.ui-growl {
+    background-color: #f44336;
+    border-color: #f44336;
+    color: #fff;
+
+    .ui-growl-item {
+        position: relative;
+        display: block;
+        padding: .5em 1em;
+
+        .ui-growl-message {
+            padding: 0 0 .25em;
+            margin-left: 2.5em;
+
+            .ui-growl-title {
+                font-weight: 700;
+                padding: 0 0 .5em;
+                display: block;
+            }
+        }
+        .ui-growl-icon-close {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            cursor: pointer;
+
+            &:before {
+                content: "\f00d";
+            }
+        }
+    }
+
+}

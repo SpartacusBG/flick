@@ -4,7 +4,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
 import { HomeComponent } from './home.component';
-import { QuoteService } from './quote.service';
+import { HttpModule } from '@angular/http';
+import { FlickrSharedService } from '../shared/services/flickr.shared.service';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -15,10 +16,11 @@ describe('HomeComponent', () => {
         imports: [
           CoreModule,
           SharedModule,
+          HttpModule,
           HttpClientTestingModule
         ],
         declarations: [HomeComponent],
-        providers: [QuoteService]
+        providers: [FlickrSharedService]
       })
       .compileComponents();
   }));

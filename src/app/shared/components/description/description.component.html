@@ -4,35 +4,34 @@
 </div>
 
 <div *ngIf="!spinner" class="data-container">
-
     <div class="title-container">
-        <a href="{{ imageUrl }}">
+        <a href="{{ imageUrl }}" title="{{ photoTitle }}" class="title-text">
             {{ photoTitle }}
         </a>
-        by 
-        <a *ngIf="author" href="https://www.flickr.com/photos/{{ authorUsername }}">
-            {{ author }}
-        </a>
-        <span *ngIf="!author">UNKNOWN</span>
-
+        <span>
+            by
+            <a *ngIf="author" href="https://www.flickr.com/photos/{{ authorUsername }}">
+                {{ author }}
+            </a>
+            <span *ngIf="!author">UNKNOWN</span>
+        </span>
     </div>
-
     <div class="description-container">
         <strong>Description:</strong>
-        <span *ngIf="!description">No description avaliable</span>
-        
-        <read-more *ngIf="description"> 
-            {{description}}
-        </read-more>
+        <div [class.desc-height]="!description">
+            <span *ngIf="!description">No description avaliable</span>
+            <read-more *ngIf="description">
+                {{description}}
+            </read-more>
+        </div>
     </div>
-
     <div class="tag-container">
         <strong>Tags:</strong>
         <read-more *ngIf="tags">
-                <span *ngFor="let tag of tags">
-                    {{ tag._content }},
-                </span>
-            </read-more>
+            <span *ngFor="let tag of tags; let i = index;">
+                {{ tag._content }}<span *ngIf="i !== (tags.length - 1)">,</span>
+            </span>
+        </read-more>
         <span *ngIf="!tags">No Tags</span>
     </div>
 </div>

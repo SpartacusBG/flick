@@ -7,12 +7,33 @@ import 'rxjs/add/operator/map';
 export class FlickrSharedService {
 
     apiKey: string = '542874581808fbf5e126a0dc29b21933';
-    defaultTag: string = 'nature';
     resourceUrl: string = 'https://cors-anywhere.herokuapp.com/https://api.flickr.com/services/rest/?method=flickr.photos.search';
 
   constructor(
       private http: Http
     ) { }
+
+    search(req?: any): any {
+        const options = {
+            search: this.setParams(req)
+        };
+        return this.http.get(this.resourceUrl, options);
+    }
+
+    query(req?: any) {
+        const options = {
+            search: this.setParams(req)
+        };
+        return this.http.get(this.resourceUrl, options);
+    }
+
+    getPhotoInfo(req: any) {
+
+        const options = {
+            search: this.setPhotoParams(req)
+        };
+        return this.http.get('https://cors-anywhere.herokuapp.com/https://api.flickr.com/services/rest/?method=flickr.photos.getInfo', options);
+    }
 
     setParams(req: any) {
         const params: URLSearchParams = new URLSearchParams();
@@ -45,28 +66,6 @@ export class FlickrSharedService {
             }
         }
         return params;
-    }
-
-    search(req?: any): any {
-        const options = {
-            search: this.setParams(req)
-        };
-        return this.http.get(this.resourceUrl, options);
-    }
-
-    query(req?: any) {
-        const options = {
-            search: this.setParams(req)
-        };
-        return this.http.get(this.resourceUrl, options);
-    }
-
-    getPhotoInfo(req: any) {
-
-        const options = {
-            search: this.setPhotoParams(req)
-        };
-        return this.http.get('https://cors-anywhere.herokuapp.com/https://api.flickr.com/services/rest/?method=flickr.photos.getInfo', options);
     }
 
 }

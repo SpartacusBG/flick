@@ -3,27 +3,33 @@
   <section>
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
-          <div class="row">
-            <div class="col-xs-8 col-md-8">
-              <input class="form-control" name="search" (keydown)="onEnterPress($event)" placeholder="Search for Title or description"
-                type="text" [(ngModel)]="currentSearch">
-            </div>
-            <div class="col-xs-4 col-md-4">
-              <button class="btn btn-success" (click)="cllSearch()">Search</button>
+        <div class="col-md-6 col-12">
+          <div class="search-container">
+            <div class="row">
+              <div class="col-md-12">
+                <label for="generic">Generic Search</label>
+                <div class="input-container">
+                  <input id="generic" class="form-control" name="search" (keydown)="onEnterPress($event, currentSearch)" placeholder="Search for Title, description or tag"
+                    type="text" [(ngModel)]="currentSearch">
+                  <button [disabled]="!currentSearch" class="btn btn-success" (click)="cllSearch()">Search</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 col-12">
+          <div class="search-container">
             <div class="row">
-                <div class="col-md-8">
-                  <input class="form-control" name="search" (keydown)="onEnterPress($event)" placeholder="Search for Tags (dogs,cats,nature)"
+              <div class="col-md-12">
+                <label for="tag-search">Search for Tags</label>
+                <div class="input-container">
+                  <input id="tag-search" class="form-control" name="search" (keydown)="onEnterPress($event, tags)" placeholder="Search for Tags (dogs,cats,nature)"
                     type="text" [(ngModel)]="tags">
-                </div>
-                <div class="col-md-4">
-                  <button class="btn btn-success" (click)="cllSearch()">Search</button>
+                    <button [disabled]="!tags" class="btn btn-success" (click)="cllSearch()">Search</button>
                 </div>
               </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -33,9 +39,7 @@
     <spinner class="spinner" [size]="120" *ngIf="spinner" [tickness]="3" [color]="'#faa933'"></spinner>
     <div class="album py-5 bg-light">
       <div class="container">
-
         <div *ngIf="imageContentArray.length == 0 && !spinner">No Results Found</div>
-
         <div class="row" *ngIf="imageContentArray.length > 0">
           <div class="col-md-4" *ngFor="let imageObj of imageContentArray">
             <div class="card mb-4 box-shadow small-box-container">
@@ -43,25 +47,18 @@
                 <img class="card-img-top small-image" style=" max-width: 100%; display: block;" [src]="constructImageUrl(imageObj.farm, imageObj.server, imageObj.id, imageObj.secret)"
                   alt="">
               </a>
-
               <div class="lightbox-target" id="{{ imageObj.id }}">
                 <img class="card-img-top" [src]="constructImageUrl(imageObj.farm, imageObj.server, imageObj.id, imageObj.secret)" alt="">
                 <a class="lightbox-close" href="#"></a>
               </div>
-
               <div class="card-body">
                 <description [imageObj]="imageObj"></description>
               </div>
             </div>
           </div>
         </div>
-
       </div>
-
     </div>
-
   </section>
-
-
 
 </div>

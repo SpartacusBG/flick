@@ -1,13 +1,22 @@
 
-.ellipsis {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-.read-more-less {
-    color: #2c8bea;
 
-    &:hover {
-        cursor: pointer;
+.read-more-container {
+
+    &.fixed-height {
+        height: 70px;;
     }
-  }
+    
+    .ellipsis {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    
+    .read-more-less {
+        color: #2c8bea;
+    
+        &:hover {
+            cursor: pointer;
+        }
+      }
+}

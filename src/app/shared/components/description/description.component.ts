@@ -8,6 +8,7 @@ import { FlickrSharedService } from '../../services/flickr.shared.service';
 import { FlickrImageModel } from '../../models/flickr.image.model';
 import { FlickrImagePropertiesModel } from '../../models/fickr.image.prop.model';
 import { FlickrPhotoPropertiesModel } from '../../models/flickr.photo.prop.model';
+import { ErrorMessageSharedService } from '../..//services/error-message.shared.service';
 
 @Component({
   selector: 'description',
@@ -30,12 +31,12 @@ export class DescriptionComponent implements OnInit {
   spinner: boolean = false;
 
   constructor(
-    private flickrSharedService: FlickrSharedService
+    private flickrSharedService: FlickrSharedService,
+    private errorMessageSharedService: ErrorMessageSharedService
   ) {
   }
 
   ngOnInit() {
-
   }
 
   getPhotoInfo(photoId: string, secret: string) {
@@ -60,13 +61,17 @@ export class DescriptionComponent implements OnInit {
 
   onPhotoSuccess(data: FlickrPhotoPropertiesModel) {
     this.response = data;
+    if (this.response.stat == 'fail') {
+      this.onError(this.response.message);
+      return;
+    }
     this.assignValuesFromResponse(this.response);
     this.spinner = false;
   }
 
   onError(err: any) {
     this.spinner = false;
+    this.errorMessageSharedService.setErrorMessage(err);
   }
-
 
 }

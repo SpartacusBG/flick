@@ -5,8 +5,21 @@
 .data-container {
     position: relative;
 
-    div {
-        margin: 10px 0
+    .title-container {
+        height: 55px;
+
+        .title-text {
+            max-width: 100px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: top;            
+        }
     }
-   
+
+    .desc-height {
+        height: 70px;
+        display: block;
+    }
 }

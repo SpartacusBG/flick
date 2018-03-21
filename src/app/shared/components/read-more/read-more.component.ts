@@ -7,6 +7,5 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 
 export class ReadMoreComponent {
-
     isCollapsed: boolean = true;
 }

@@ -1,5 +1,8 @@
-<div [class.ellipsis]="isCollapsed">
-    <ng-content></ng-content>
+
+<div class="read-more-container" [class.fixed-height]="isCollapsed">
+    <div [class.ellipsis]="isCollapsed">
+        <ng-content></ng-content>
+    </div>
+    <div class="read-more-less" *ngIf="isCollapsed" (click)="isCollapsed =! isCollapsed">Read more</div>
+    <div class="read-more-less" *ngIf="!isCollapsed" (click)="isCollapsed =! isCollapsed">Read less</div>
 </div>
-<div class="read-more-less" *ngIf="isCollapsed" (click)="isCollapsed =! isCollapsed">Read more</div>
-<div class="read-more-less" *ngIf="!isCollapsed" (click)="isCollapsed =! isCollapsed">Read less</div>
