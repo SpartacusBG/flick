@@ -28,7 +28,7 @@
     </div>
     <div class="tag-container">
         <strong>Tags:</strong>
-        <read-more [inputData]="tags" *ngIf="tags">
+        <read-more [inputData]="returnNewArrFromObjArr(tags, '_content')" *ngIf="tags">
             <span *ngFor="let tag of tags; let i = index;">
                 {{ tag._content }}<span *ngIf="i !== (tags.length - 1)">,</span>
             </span>

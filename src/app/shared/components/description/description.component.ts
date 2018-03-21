@@ -74,4 +74,12 @@ export class DescriptionComponent implements OnInit {
     this.errorMessageSharedService.setErrorMessage(err);
   }
 
+  returnNewArrFromObjArr(arrayToLoop: any[], key: string) {
+    let newArr = arrayToLoop.map((item) => {
+      return item[key];
+    });
+
+    return newArr;
+  }
+
 }
