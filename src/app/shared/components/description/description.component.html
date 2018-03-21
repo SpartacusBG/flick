@@ -5,9 +5,10 @@
 
 <div *ngIf="!spinner" class="data-container">
     <div class="title-container">
-        <a href="{{ imageUrl }}" title="{{ photoTitle }}" class="title-text">
+        <a *ngIf="photoTitle" href="{{ imageUrl }}" title="{{ photoTitle }}" class="title-text">
             {{ photoTitle }}
         </a>
+        <span *ngIf="!photoTitle"> No Title</span>
         <span>
             by
             <a *ngIf="author" href="https://www.flickr.com/photos/{{ authorUsername }}">
