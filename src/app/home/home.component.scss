@@ -32,6 +32,10 @@
     @include respond-to(medium) {
       height: 600px;
     }
+
+    @include respond-to(small) {
+      height: 500px;
+    }
   
     div.col-md-4 {
       padding : 10px 5px;
