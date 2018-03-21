@@ -21,14 +21,14 @@
         <strong>Description:</strong>
         <div [class.desc-height]="!description">
             <span *ngIf="!description">No description avaliable</span>
-            <read-more *ngIf="description">
+            <read-more [inputData]="description" *ngIf="description">
                 {{description}}
             </read-more>
         </div>
     </div>
     <div class="tag-container">
         <strong>Tags:</strong>
-        <read-more *ngIf="tags">
+        <read-more [inputData]="tags" *ngIf="tags">
             <span *ngFor="let tag of tags; let i = index;">
                 {{ tag._content }}<span *ngIf="i !== (tags.length - 1)">,</span>
             </span>
