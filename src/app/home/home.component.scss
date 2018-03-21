@@ -1,3 +1,5 @@
+@import '_media-query.mixin';
+
 .small-image {
     max-width: 100%;
     width: auto;
@@ -26,6 +28,10 @@
     overflow-y: scroll;
     padding: 0;
     list-style: none;
+
+    @include respond-to(medium) {
+      height: 600px;
+    }
   
     div.col-md-4 {
       padding : 10px 5px;
