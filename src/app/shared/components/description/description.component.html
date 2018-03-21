@@ -20,7 +20,7 @@
     <div class="description-container">
         <strong>Description:</strong>
         <div [class.desc-height]="!description">
-            <span *ngIf="!description">No description avaliable</span>
+            <span *ngIf="!description">No description available</span>
             <read-more [inputData]="description" *ngIf="description">
                 {{description}}
             </read-more>
